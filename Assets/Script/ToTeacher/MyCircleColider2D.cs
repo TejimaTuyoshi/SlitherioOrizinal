@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ public class MyCircleColider2D : MonoBehaviour
     public bool IsColed => _isColed;
     bool _needCheckCol = true;
 
+    System.Action<MyCircleColider2D>  _coledAction = null;
+
+    public void SetCallback(Action<MyCircleColider2D> coll)
+    {
+        _coledAction = coll;
+    }
+
     private void Awake()
     {
         _listColiders.Add(this);
@@ -25,7 +33,6 @@ public class MyCircleColider2D : MonoBehaviour
 
     void Update()
     {
-        if (this._isColed) Destroy(this.gameObject);//テスト
 
         this._isColed = false;
         if (this._needCheckCol == false) { return; }
@@ -45,6 +52,8 @@ public class MyCircleColider2D : MonoBehaviour
             {
                 //当たっている場合
                 _isColed = true;
+                var c = b.GetComponent<FoodController>();
+                _coledAction?.Invoke(b);
                 b.SetColed();//相手にも当たったことを知らせる。
             }
         }

@@ -19,6 +19,7 @@ public class FoodController : MonoBehaviour
     private SpriteRenderer _sprLight;
 
     private float _foodWeight = 0.5f;
+    public float FoodWeight => _foodWeight;
 
     private E_FoodSizeType _foodType = E_FoodSizeType.None;
     public float FoodSize => (float)_foodType * 0.125f;
