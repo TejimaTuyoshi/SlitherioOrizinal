@@ -1,0 +1,12 @@
+.vsconfig
+Assembly-CSharp.csproj
+.vs/
+Assets/ect/
+Assets/Settings.meta
+Assets/Settings/
+Library/
+Logs/
+obj/
+Packages/
+ProjectSettings/
+UserSettings/
